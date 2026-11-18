@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RUSKLIMAT NEXT — Премиальный климат</title>
+<meta name="theme-color" content="#090909">
+
+<style>
+:root {
+ --bg:#090909;
+ --card:#15140f;
+ --gold:#d8b56e;
+ --gold2:#f5dfaa;
+ --text:#f7f3e9;
+ --muted:#aaa397;
+ --line:#42351f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+ background:var(--bg);
+ color:var(--text);
+ font-family:Arial,sans-serif;
+}
+a{text-decoration:none;color:inherit}
+.container{width:90%;max-width:1150px;margin:auto}
+
+header{
+ position:sticky;top:0;z-index:10;
+ background:#090909;
+ border-bottom:1px solid var(--line);
+}
+nav{
+ min-height:78px;
+ display:flex;align-items:center;
+ justify-content:space-between;
+ gap:20px;
+}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{
+ width:44px;height:44px;
+ display:grid;place-items:center;
+ border:1px solid var(--gold);
+ border-radius:10px;
+ color:var(--gold);
+ font:30px Georgia;
+}
+.logo-name{font-weight:800;letter-spacing:3px}
+.logo-sub{
+ display:block;color:var(--gold);
+ font-size:9px;letter-spacing:3px;
+}
+.links{display:flex;gap:25px;font-size:13px}
+.links a:hover{color:var(--gold)}
+.btn{
+ display:inline-block;
+ padding:14px 22px;
+ border-radius:4px;
+ background:linear-gradient(135deg,var(--gold2),#b88c43);
+ color:#15110a;
+ font-size:11px;
+ font-weight:bold;
+ letter-spacing:1px;
+ text-transform:uppercase;
+ transition:.2s;
+}
+.btn:hover{transform:translateY(-3px)}
+.outline{
+ background:transparent;
+ border:1px solid var(--gold);
+ color:var(--gold2);
+}
+.menu{
+ display:none;
+ background:none;
+ border:1px solid var(--line);
+ color:var(--gold);
+ padding:9px 13px;
+ font-size:20px;
+}
+.hero{
+ min-height:570px;
+ display:flex;
+ align-items:center;
+ background:
+ radial-gradient(ellipse at 85% 45%,#8e682c35,transparent 40%),
+ linear-gradient(120deg,#090909,#19150e);
+ position:relative;
+ overflow:hidden;
+}
+.hero:after{
+ content:"R";
+ position:absolute;
+ right:8%;
+ top:50%;
+ transform:translateY(-50%);
+ font:450px Georgia;
+ color:#d8b56e0b;
+}
+.hero-content{position:relative;z-index:1;padding:80px 0}
+.label{
+ color:var(--gold);
+ font-size:11px;
+ letter-spacing:3px;
+ text-transform:uppercase;
+}
+h1{
+ font:clamp(45px,7vw,78px)/1.08 Georgia;
+ margin:25px 0;
+}
+.gold{color:var(--gold)}
+.hero p{
+ max-width:550px;
+ color:var(--muted);
+ line-height:1.9;
+ font-size:14px;
+}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+.note{margin-top:40px;font-size:10px;color:#8c826f;letter-spacing:2px}
+
+.stats{
+ border-block:1px solid var(--line);
+ background:#10100e;
+}
+.stats-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ padding:25px 0;
+}
+.stat{padding:5px 25px;border-right:1px solid var(--line)}
+.stat:first-child{padding-left:0}
+.stat:last-child{border:0}
+.stat strong{
+ display:block;
+ color:var(--gold2);
+ font:32px Georgia;
+}
+.stat span{color:var(--muted);font-size:11px}
+
+section{padding:85px 0}
+h2{font:clamp(32px,4vw,48px) Georgia;margin:15px 0}
+.description{
+ color:var(--muted);
+ max-width:550px;
+ font-size:13px;
+ line-height:1.8;
+}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:16px;
+ margin-top:35px;
+}
+.category{
+ display:block;
+ padding:27px;
+ min-height:210px;
+ background:linear-gradient(145deg,#1b1914,#10100e);
+ border:1px solid var(--line);
+ border-radius:8px;
+ transition:.25s;
+}
+.category:hover{
+ transform:translateY(-5px);
+ border-color:var(--gold);
+}
+.symbol{
+ width:48px;height:48px;
+ display:grid;place-items:center;
+ border:1px solid var(--gold);
+ border-radius:10px;
+ color:var(--gold);
+ font-size:24px;
+ margin-bottom:25px;
+}
+.category h3{font-size:17px;margin-bottom:9px}
+.category p{font-size:12px;color:var(--muted);line-height:1.7}
+.arrow{float:right;color:var(--gold)}
+
+.about{
+ background:#11100d;
+ border-block:1px solid var(--line);
+}
+.about-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:45px;
+ align-items:center;
+}
+.about p{
+ color:var(--muted);
+ font-size:13px;
+ line-height:1.9;
+}
+.about-box{
+ padding:30px;
+ border:1px solid var(--line);
+ background:#17150f;
+ border-radius:8px;
+}
+.about-box h3{
+ color:var(--gold);
+ letter-spacing:2px;
+ font-size:12px;
+ margin-bottom:20px;
+}
+.point{display:flex;gap:13px;margin:18px 0}
+.point b{color:var(--gold)}
+.point strong{font-size:13px}
+.point p{font-size:11px;margin-top:4px}
+
+.cta{
+ padding:40px;
+ border:1px solid var(--gold);
+ border-radius:9px;
+ background:radial-gradient(ellipse at 90% 50%,#a27b3b25,transparent 45%),#13120f;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:20px;
+}
+.cta p{color:var(--muted);font-size:12px}
+
+footer{
+ background:#050505;
+ padding:35px 0 20px;
+ border-top:1px solid var(--line);
+}
+.footer-top{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:20px;
+}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;font-size:11px;color:var(--muted)}
+.footer-bottom{
+ border-top:1px solid var(--line);
+ margin-top:25px;
+ padding-top:17px;
+ font-size:10px;
+ color:#777;
+ display:flex;
+ justify-content:space-between;
+ gap:15px;
+}
+
+@media(max-width:750px){
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .about-grid{gap:25px}
+}
+@media(max-width:580px){
+ nav{min-height:68px}
+ .menu{display:block}
+ .links{
+  display:none;
+  position:absolute;
+  top:68px;left:0;right:0;
+  background:#0b0b0a;
+  padding:23px;
+  flex-direction:column;
+  border-bottom:1px solid var(--line);
+ }
+ .links.open{display:flex}
+ nav>.btn{display:none}
+ .hero{min-height:530px}
+ .hero:after{font-size:300px;right:-90px}
+ .grid,.about-grid{grid-template-columns:1fr}
+ .stats-grid{grid-template-columns:1fr;gap:10px}
+ .stat{border:0;border-bottom:1px solid var(--line);padding:10px 0}
+ .stat:last-child{border:0}
+ .cta{display:block;padding:27px}
+ .cta .btn{display:block;text-align:center;margin-top:20px}
+ .footer-top,.footer-bottom{display:block}
+ .footer-links{margin-top:20px}
+ .footer-bottom span{display:block;margin-top:10px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container">
+<nav>
+<a href="#home" class="logo">
+ <span class="logo-icon">R</span>
+ <span>
+  <span class="logo-name">RUSKLIMAT</span>
+  <span class="logo-sub">NEXT · PREMIUM CONCEPT</span>
+ </span>
+</a>
+
+<div class="links" id="links">
+ <a href="#catalog">Каталог</a>
+ <a href="#about">О компании</a>
+ <a href="#official">Официальный сайт</a>
+</div>
+
+<a class="btn" href="https://www.rusklimat.ru/catalog" target="_blank">Каталог ↗</a>
+<button class="menu" id="menu">☰</button>
+</nav>
+</div>
+</header>
+
+<main id="home">
+
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+ <div class="label">Климатические и инженерные решения</div>
+ <h1>Комфорт —<br><span class="gold">это точность.</span></h1>
+ <p>
+  Современные решения для создания идеального микроклимата.
+  Выбирайте оборудование, изучайте направления и переходите
+  в официальный каталог «Русклимат».
+ </p>
+ <div class="actions">
+  <a class="btn" href="https://www.rusklimat.ru/catalog" target="_blank">Открыть каталог ↗</a>
+  <a class="btn outline" href="#catalog">Исследовать сайт</a>
+ </div>
+ <div class="note">RUSKLIMAT NEXT · PREMIUM CLIMATE EXPERIENCE</div>
+</div>
+</div>
+</section>
+
+<div class="stats">
+<div class="container stats-grid">
+ <div class="stat"><strong>1996</strong><span>Год основания холдинга</span></div>
+ <div class="stat"><strong>284</strong><span>Города присутствия</span></div>
+ <div class="stat"><strong>80</strong><span>Брендов в ассортименте</span></div>
+</div>
+</div>
+
+<section id="catalog">
+<div class="container">
+ <div class="label">Основные направления</div>
+ <h2>Техника для <span class="gold">любого пространства</span></h2>
+ <p class="description">
+  Выберите интересующую категорию и перейдите к ассортименту
+  на официальном сайте.
+ </p>
+
+ <div class="grid">
+
+ <a class="category" href="https://www.rusklimat.ru/catalog" target="_blank">
+  <span class="arrow">↗</span>
+  <div class="symbol">❄</div>
+  <h3>Кондиционирование</h3>
+  <p>Сплит-системы, мобильные кондиционеры и климатические комплексы.</p>
+ </a>
+
+ <a class="category" href="https://www.rusklimat.ru/catalog" target="_blank">
+  <span class="arrow">↗</span>
+  <div class="symbol">⌁</div>
+  <h3>Отопление</h3>
+  <p>Радиаторы, конвекторы, котлы и решения для тепла.</p>
+ </a>
+
+ <a class="category" href="https://www.rusklimat.ru/catalog" target="_blank">
+  <span class="arrow">↗</span>
+  <div class="symbol">◎</div>
+  <h3>Вентиляция</h3>
+  <p>Оборудование для циркуляции и обновления воздуха.</p>
+ </a>
+
+ <a class="category" href="https://www.rusklimat.ru/catalog" target="_blank">
+  <span class="arrow">↗</span>
+  <div class="symbol">◌</div>
+  <h3>Очистка воздуха</h3>
+  <p>Очистители, увлажнители и комплексы для микроклимата.</p>
+ </a>
+
+ <a class="category" href="https://www.rusklimat.ru/catalog" target="_blank">
+  <span class="arrow">↗</span>
+  <div class="symbol">♨</div>
+  <h3>Водонагреватели</h3>
+  <p>Решения для горячего водоснабжения.</p>
+ </a>
+
+ <a class="category" href="https://www.rusklimat.ru/catalog" target="_blank">
+  <span class="arrow">↗</span>
+  <div class="symbol">⌘</div>
+  <h3>Инженерные системы</h3>
+  <p>Насосы, трубы, фитинги и комплектующие.</p>
+ </a>
+
+ </div>
+</div>
+</section>
+
+<section class="about" id="about">
+<div class="container about-grid">
+ <div>
+  <div class="label">О компании</div>
+  <h2>Опыт, который<br><span class="gold">создаёт климат.</span></h2>
+  <p>
+   «Русклимат» — торгово-производственный холдинг,
+   работающий на рынке климатической техники.
+   Компания развивает направления кондиционирования,
+   вентиляции, отопления и инженерных систем.
+  </p>
+  <br>
+  <a class="btn outline" href="https://www.rusklimat.ru/" target="_blank">Подробнее ↗</a>
+ </div>
+
+ <div class="about-box">
+  <h3>ПРЕИМУЩЕСТВА</h3>
+  <div class="point"><b>✦</b><div><strong>Широкий ассортимент</strong><p>Оборудование для разных задач.</p></div></div>
+  <div class="point"><b>✦</b><div><strong>Для дома и бизнеса</strong><p>Бытовые и инженерные решения.</p></div></div>
+  <div class="point"><b>✦</b><div><strong>Сервисная поддержка</strong><p>Информация на официальном сайте.</p></div></div>
+ </div>
+</div>
+</section>
+
+<section id="official">
+<div class="container">
+ <div class="cta">
+  <div>
+   <div class="label">Официальный магазин</div>
+   <h2>Готовы выбрать оборудование?</h2>
+   <p>Переходите к полному каталогу, ценам и условиям покупки.</p>
+  </div>
+  <a class="btn" href="https://www.rusklimat.ru/catalog" target="_blank">Перейти ↗</a>
+ </div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+ <div class="footer-top">
+  <a href="#home" class="logo">
+   <span class="logo-icon">R</span>
+   <span>
+    <span class="logo-name">RUSKLIMAT</span>
+    <span class="logo-sub">NEXT · PREMIUM CONCEPT</span>
+   </span>
+  </a>
+  <div class="footer-links">
+   <a href="#catalog">Каталог</a>
+   <a href="#about">О компании</a>
+   <a href="https://www.rusklimat.ru/" target="_blank">Официальный сайт ↗</a>
+  </div>
+ </div>
+ <div class="footer-bottom">
+  <span>© RUSKLIMAT NEXT</span>
+  <span>Независимая концепция сайта. Не является официальным ресурсом холдинга.</span>
+ </div>
+</div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menu");
+const links = document.getElementById("links");
+
+menuButton.addEventListener("click", function(){
+ links.classList.toggle("open");
+ menuButton.textContent = links.classList.contains("open") ? "×" : "☰";
+});
+
+links.querySelectorAll("a").forEach(function(link){
+ link.addEventListener("click", function(){
+  links.classList.remove("open");
+  menuButton.textContent = "☰";
+ });
+});
+</script>
+
+</body>
+</html>
